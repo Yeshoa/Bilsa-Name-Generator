@@ -6,7 +6,7 @@ public class LetraGenerator {
 	private static final String CONSONANTS = "BCDFGHJKLMNPRSTVWXZ";
 	private static final String VOWELS = "AEIOU";
 	private static final String SOFT_CONSONANTS = "HJVW";
-	private static final String EXCEPTIONAL_VOWEL = "A";
+//	private static final String EXCEPTIONAL_VOWEL = "A";
 
 	private Random random;
 
@@ -41,8 +41,7 @@ public class LetraGenerator {
 			// SI en la primer silaba HAY 2 CONSONANTES SEGUIDAS TIENE QUE GHAVER VOCAL
 		} else if (length == 2 && todasConsonantesNoSuaves(prev.substring(length - 2, length))) {
 			return generarVocalOConsonanteSuave();
-			// SI NO CUMPLE NINGUNA DE LAS ANTERIORES, Y LA ULTIMA ES VOCAL, ESTAS SON LAS
-			// CHANCES
+			// SI NO CUMPLE NINGUNA DE LAS ANTERIORES, Y LA ULTIMA ES VOCAL, ESTAS SON LAS CHANCES
 		} else if (length != 0) {
 			if (esVocal(prev.charAt(length - 1))) {
 				if (prob < 80) {// CONSONANTE NORMAL 80%
@@ -79,6 +78,9 @@ public class LetraGenerator {
 		char ultimaLetra = prev.charAt(length - 1);
 		// si la ultima letra es vocal o consonante suave
 		int prob = random.nextInt(100);
+		if (todasConsonantes(prev)) {	//para evitar que hayan todas consonantes
+			silaba.append(generarVocal());
+		}
 		if (!esConsonanteNoSuave(ultimaLetra)) {
 			if (length >= 4 && todasConsonantes(prev.substring(length - 4, length))) {
 				silaba.append(generarVocal());

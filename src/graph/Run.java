@@ -22,11 +22,11 @@ public class Run extends JFrame {
 
         // Crear los componentes
         JButton button = new JButton("Run");
-        textArea = new JTextArea(1, 15);
+        textArea = new JTextArea(1, 10);
         textArea.setEditable(false);
         textArea.setLineWrap(true);
         Font font = textArea.getFont();
-        textArea.setFont(new Font(font.getName(), font.BOLD, 20)); // Tamaño de fuente: 16
+        textArea.setFont(new Font(font.getName(), font.BOLD, 80)); // Tamaño de fuente: 16
         JScrollPane scrollPane = new JScrollPane(textArea);
 
         // Agregar los componentes a la ventana

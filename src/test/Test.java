@@ -2,25 +2,26 @@ package test;
 
 import entities.ExponentialRandomNumberGenerator;
 import entities.Nombre;
-import entities.NombreGPT;
+import entities.*;
 
 public class Test {
 
 	public static void main(String[] args) {
 //		int cant = 15;
 //		for (int i=0;i<cant;i++) {
+		boolean encontrado = false;
+		int trys = 0;
+		while(!encontrado) {
 //			NombreGPT generator = new NombreGPT();
 //			generator.generarNombre(ExponentialRandomNumberGenerator.finalGenerator());
+			trys++;
 			Nombre generator = new Nombre(ExponentialRandomNumberGenerator.generateRandomNumber());
-			System.out.print(generator.getNombre() + " ");
-//			if (i!= cant-1) {
-//				System.out.print("---");
-//			}
-//	        if ((i+1)% 12 == 0) {
-//	            System.out.println();
-//	        }
-//		}
-//		System.out.println();
+			if(generator.getNombre().equals("VJNUS")) encontrado=true;
+			System.out.println(generator.getNombre() + " " + trys);
+			WordSaver.saveWord(generator.getNombre());
+			
+		}
+		System.out.println("LISTO");
 	}
 
 }
